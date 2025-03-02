@@ -1,14 +1,14 @@
-use 5.38.0;
-use experimental 'try';
+use 5.36.3;
+use Feature::Compat::Try;
 
 package Raylib::FFI;
 
 our $VERSION = '0.02';
 
+use Exporter           qw(import);
 use FFI::CheckLib      qw( find_lib_or_die );
 use FFI::Platypus 2.08 ();
 use FFI::C::StructDef  ();
-use builtin 'export_lexically';
 
 my $ffi = FFI::Platypus->new(
     api => 2,
@@ -828,15 +828,15 @@ my %functions = (
     ],
 
     # Texture Loading Functions
-    LoadTexture          => [ ['string']         => 'Texture' ],
-    LoadTextureFromImage => [ ['Image']          => 'Texture2D' ],
-    LoadTextureCubemap   => [ [ 'Image', 'int' ] => 'TextureCubemap' ],
-    LoadRenderTexture    => [ [ 'int', 'int' ] => 'RenderTexture2D' ],
-    IsTextureValid       => [ ['Texture']      => 'bool' ],
-    UnloadTexture        => [ ['Texture2D']    => 'void' ],
-    IsRenderTextureValid => [ ['RenderTexture2D']                   => 'bool' ],
-    UnloadRenderTexture  => [ ['RenderTexture2D']                   => 'void' ],
-    UpdateTexture        => [ [ 'Texture2D', 'Image' ]              => 'void' ],
+    LoadTexture          => [ ['string']               => 'Texture' ],
+    LoadTextureFromImage => [ ['Image']                => 'Texture2D' ],
+    LoadTextureCubemap   => [ [ 'Image', 'int' ]       => 'TextureCubemap' ],
+    LoadRenderTexture    => [ [ 'int', 'int' ]         => 'RenderTexture2D' ],
+    IsTextureValid       => [ ['Texture']              => 'bool' ],
+    UnloadTexture        => [ ['Texture2D']            => 'void' ],
+    IsRenderTextureValid => [ ['RenderTexture2D']      => 'bool' ],
+    UnloadRenderTexture  => [ ['RenderTexture2D']      => 'void' ],
+    UpdateTexture        => [ [ 'Texture2D', 'Image' ] => 'void' ],
     UpdateTextureRec     => [ [ 'Texture2D', 'Rectangle', 'Image' ] => 'void' ],
 
     # Texture Configuration Functions
@@ -855,8 +855,8 @@ my %functions = (
       [ [qw(Texture Rectangle Rectangle Vector2D float Color)] => 'void' ],
     DrawTextureNPatch => [
         [
-            'Texture2D', 'NPatchInfo', 'Rectangle', 'Vector2D', 'float',
-            'Color'
+            'Texture2D', 'NPatchInfo', 'Rectangle', 'Vector2D',
+            'float',     'Color'
         ] => 'void'
     ],
 
@@ -886,18 +886,21 @@ my %functions = (
     IsFontValid        => [ ['Font']                                => 'bool' ],
     LoadFontData       =>
       [ [ 'Font', 'string', 'int', 'int', 'float' ] => 'GlyphInfo' ],
-    GenImageFontAtlas =>
-      [ [ 'GlyphInfo', 'Rectangle', 'int', 'int', 'int', 'int' ] => 'Image' ],
+    GenImageFontAtlas => [
+        [ 'GlyphInfo', 'Rectangle', 'int', 'int', 'int', 'int' ] => 'Image'
+    ],
     UnloadFontData => [ ['GlyphInfo'] => 'void' ],
     UnloadFont     => [ ['Font']      => 'void' ],
 
     # text drawing functions
     DrawFPS    => [ [ 'int',    'int' ] => 'void' ],
     DrawText   => [ [ 'string', 'int', 'int', 'int', 'Color' ] => 'void' ],
-    DrawTextEx =>
-      [ [ 'Font', 'string', 'Vector2D', 'float', 'float', 'Color' ] => 'void' ],
-    DrawTextPro =>
-      [ [ 'Font', 'string', 'Vector2D', 'float', 'float', 'Color' ] => 'void' ],
+    DrawTextEx => [
+        [ 'Font', 'string', 'Vector2D', 'float', 'float', 'Color' ] => 'void'
+    ],
+    DrawTextPro => [
+        [ 'Font', 'string', 'Vector2D', 'float', 'float', 'Color' ] => 'void'
+    ],
     DrawTextCodepoint  => [ [ 'Font', 'int', 'int', 'Color' ] => 'void' ],
     DrawTextCodepoints =>
       [ [ 'Font', 'string', 'int', 'int', 'int', 'Color' ] => 'void' ],
@@ -1011,8 +1014,9 @@ my %functions = (
     IsModelAnimationValid => [ [ 'Model', 'ModelAnimation' ]        => 'bool' ],
 
     # collision detection functions
-    CheckCollisionSpheres =>
-      [ [ 'Vector3D', 'Vector3D', 'float', 'Vector3D', 'float' ] => 'bool' ],
+    CheckCollisionSpheres => [
+        [ 'Vector3D', 'Vector3D', 'float', 'Vector3D', 'float' ] => 'bool'
+    ],
     CheckCollisionBoxes     => [ [ 'BoundingBox', 'BoundingBox' ] => 'bool' ],
     CheckCollisionBoxSphere =>
       [ [ 'BoundingBox', 'Vector3D', 'float' ] => 'bool' ],
@@ -1108,12 +1112,7 @@ for my $func ( keys %functions ) {
 }
 
 # export all the functions lexically
-sub import( $class, @list ) {
-    @list = keys %functions unless @list;
-    export_lexically map { $_ => __PACKAGE__->can($_) }
-      grep { __PACKAGE__->can($_) } @list;
-}
-
+our @EXPORT_OK = grep { __PACKAGE__->can($_) } keys %functions;
 1;
 __END__
 
@@ -1127,7 +1126,6 @@ Raylib::FFI - Perl FFI bindings for raylib
 
 =head1 SYNOPSIS
 
-    use 5.38.2;
     use lib qw(lib);
     use Raylib::FFI; # defaults to exporting all the functions
     use constant Color => 'Raylib::FFI::Color';
@@ -1393,7 +1391,7 @@ Set window dimensions.
 
 Set window opacity [0.0f..1.0f]
 
-=head2 SetWindowFocused() 
+=head2 SetWindowFocused()
 
 Set window focused
 

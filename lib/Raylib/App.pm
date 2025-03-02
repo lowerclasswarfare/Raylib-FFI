@@ -1,5 +1,5 @@
-use 5.38.0;
-use experimental 'class';
+use 5.36.3;
+use Feature::Compat::Class;
 
 use Raylib::Text;
 use Raylib::Texture;
@@ -112,7 +112,6 @@ Raylib::App - Perlish wrapper for Raylib videogame library
 
 =head1 SYNOPSIS
 
-    use 5.38.2;
     use lib qw(lib);
     use Raylib::App;
 

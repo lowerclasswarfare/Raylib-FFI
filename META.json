@@ -36,7 +36,7 @@
             "File::Share" : "0",
             "Module::Build::Tiny" : "0",
             "builtin::Backport" : "0",
-            "perl" : "v5.38.0"
+            "perl" : "v5.36.3"
          }
       }
    },

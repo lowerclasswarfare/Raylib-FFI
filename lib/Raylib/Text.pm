@@ -1,5 +1,5 @@
-use 5.38.0;
-use experimental 'class';
+use 5.36.3;
+use Feature::Compat::Class;
 
 class Raylib::Text {
     use Raylib::FFI;

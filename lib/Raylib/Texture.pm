@@ -1,5 +1,5 @@
-use 5.38.0;
-use experimental qw(class);
+use 5.36.3;
+use Feature::Compat::Class;
 
 class Raylib::Image {
     use Raylib::FFI;

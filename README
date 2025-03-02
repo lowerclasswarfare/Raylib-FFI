@@ -4,11 +4,10 @@ NAME
 
 SYNOPSIS
 
-        use 5.38.2;
         use lib qw(lib);
         use Raylib::FFI; # defaults to exporting all the functions
         use constant Color => 'Raylib::FFI::Color';
-    
+
         InitWindow( 800, 600, "Testing!" );
         SetTargetFPS(60);
         while ( !WindowShouldClose() ) {

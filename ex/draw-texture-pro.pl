@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-use v5.38.2;
+use v5.36.3;
 use lib qw(lib);
 
 use Raylib::App;

@@ -1,9 +1,17 @@
-use 5.38.0;
-use builtin 'export_lexically';
+use 5.36.3;
 use Raylib::FFI ();
 
 package Raylib::Color {
+    use Exporter       qw(import);
     use Convert::Color ();
+
+    our @EXPORT_OK = qw(
+      LIGHTGRAY GRAY DARKGRAY LIGHTGREY GREY DARKGREY YELLOW GOLD ORANGE PINK RED
+      MAROON GREEN LIME DARKGREEN SKYBLUE BLUE DARKBLUE PURPLE VIOLET DARKPURPL
+      BEIGE BROWN DARKBROWN WHITE BLACK BLANK MAGENTA RAYWHITE
+
+      REDISH GREENISH BLUISH GRAYISH GREYISH CYANISH MAGENTAISH YELLOWISH WHITISH
+    );
 
     sub rgba ( $r, $g, $b, $a = 255 ) {
         return Raylib::FFI::Color->new( r => $r, g => $g, b => $b, a => $a );
@@ -94,47 +102,4 @@ package Raylib::Color {
     # 3D gradients
     sub WHITISH { rgb( shift() * 255, shift() * 255, shift() * 255 ) }
 
-    sub import {
-        export_lexically(
-            LIGHTGRAY => \&LIGHTGRAY,
-            GRAY      => \&GRAY,
-            DARKGRAY  => \&DARKGRAY,
-            LIGHTGREY => \&LIGHTGREY,
-            GREY      => \&GREY,
-            DARKGREY  => \&DARKGREY,
-            YELLOW    => \&YELLOW,
-            GOLD      => \&GOLD,
-            ORANGE    => \&ORANGE,
-            PINK      => \&PINK,
-            RED       => \&RED,
-            MAROON    => \&MAROON,
-            GREEN     => \&GREEN,
-            LIME      => \&LIME,
-            DARKGREEN => \&DARKGREEN,
-            SKYBLUE   => \&SKYBLUE,
-            BLUE      => \&BLUE,
-            DARKBLUE  => \&DARKBLUE,
-            PURPLE    => \&PURPLE,
-            VIOLET    => \&VIOLET,
-            DARKPURPL => \&DARKPURPL,
-            BEIGE     => \&BEIGE,
-            BROWN     => \&BROWN,
-            DARKBROWN => \&DARKBROWN,
-            WHITE     => \&WHITE,
-            BLACK     => \&BLACK,
-            BLANK     => \&BLANK,
-            MAGENTA   => \&MAGENTA,
-            RAYWHITE  => \&RAYWHITE,
-
-            REDISH     => \&REDISH,
-            GREENISH   => \&GREENISH,
-            BLUISH     => \&BLUISH,
-            GRAYISH    => \&GRAYISH,
-            GREYISH    => \&GREYISH,
-            CYANISH    => \&CYANISH,
-            MAGENTAISH => \&MAGENTAISH,
-            YELLOWISH  => \&YELLOWISH,
-            WHITISH    => \&WHITISH,
-        );
-    }
 }
