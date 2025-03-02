@@ -49,7 +49,7 @@
       },
       "Raylib::FFI" : {
          "file" : "lib/Raylib/FFI.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       },
       "Raylib::FFI::AudioStream" : {
          "file" : "lib/Raylib/FFI.pm"
@@ -170,7 +170,7 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.02",
+   "version" : "0.03",
    "x_serialization_backend" : "JSON::PP version 4.16",
    "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later"
 }

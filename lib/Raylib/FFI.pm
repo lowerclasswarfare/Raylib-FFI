@@ -3,7 +3,7 @@ use Feature::Compat::Try;
 
 package Raylib::FFI;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Exporter           qw(import);
 use FFI::CheckLib      qw( find_lib_or_die );

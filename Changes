@@ -1,5 +1,7 @@
 Revision history for Raylib-FFI
 
+0.03     2025-03-02  Dropped version of Perl to 5.36.3
+
 0.02     2024-11-20  Added support for raylib 5.5
           - Updated validation function names from "Ready" to "Valid" to match
             raylib 5.5
