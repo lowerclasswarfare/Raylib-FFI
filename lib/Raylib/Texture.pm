@@ -19,7 +19,7 @@ class Raylib::Image {
                 $image = LoadImage($image);
             }
         }
-        unless ( IsImageReady($image) ) {
+        unless ( IsImageValid($image) ) {
             die "Failed to load image";
         }
     }
@@ -51,7 +51,7 @@ class Raylib::Texture {
         unless ( $texture isa Raylib::FFI::Texture ) {
             $texture = LoadTexture($texture);
         }
-        unless ( IsTextureReady($texture) ) {
+        unless ( IsTextureValid($texture) ) {
             die "Failed to load texture";
         }
     }
