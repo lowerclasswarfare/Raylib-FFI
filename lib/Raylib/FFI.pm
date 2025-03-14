@@ -1113,7 +1113,9 @@ for my $func ( keys %functions ) {
 
 # export all the functions lexically
 our @EXPORT_OK = grep { __PACKAGE__->can($_) } keys %functions;
+our %EXPORT_TAGS = (all => \@EXPORT_OK);
 1;
+
 __END__
 
 =pod

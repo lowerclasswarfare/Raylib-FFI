@@ -2,7 +2,7 @@ use 5.36.3;
 use Feature::Compat::Class;
 
 class Raylib::Image {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use builtin qw(false);
 
     field $image : param;
@@ -38,7 +38,7 @@ class Raylib::Image {
 }
 
 class Raylib::Texture {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use Raylib::Color;
 
     field $texture : param;

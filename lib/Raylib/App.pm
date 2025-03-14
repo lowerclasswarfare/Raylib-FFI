@@ -5,7 +5,7 @@ use Raylib::Text;
 use Raylib::Texture;
 
 class Raylib::App {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use Raylib::Color qw();
 
     field $title : param = $0;

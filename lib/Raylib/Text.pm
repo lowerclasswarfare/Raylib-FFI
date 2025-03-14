@@ -18,7 +18,7 @@ class Raylib::Text {
 }
 
 class Raylib::Text::FPS {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     field $position : param = [ 0, 0 ];
 
     method draw() {
