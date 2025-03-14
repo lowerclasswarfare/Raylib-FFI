@@ -26,3 +26,4 @@ class Raylib::Text::FPS {
     }
 }
 
+1;

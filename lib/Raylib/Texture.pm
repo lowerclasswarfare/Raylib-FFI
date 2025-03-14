@@ -97,3 +97,5 @@ class Raylib::Texture {
         }
     }
 }
+
+1;

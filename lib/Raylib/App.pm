@@ -100,6 +100,8 @@ class Raylib::App {
     method DESTROY { CloseWindow() }
 }
 
+1;
+
 __END__
 
 =pod
