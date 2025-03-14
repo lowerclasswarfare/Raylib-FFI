@@ -776,7 +776,7 @@ my %functions = (
     ImageBlurGaussian     => [ [ 'Image', 'float' ]          => 'void' ],
 
     ImageResize       => [ [ 'Image', 'int', 'int' ] => 'void' ],
-    ImageResizeNN     => [ [ 'Image', 'int', 'int' ] => 'void' ],
+    ImageResizeNN     => [ [ 'Image*', 'int', 'int' ] => 'void' ],
     ImageResizeCanvas =>
       [ [ 'Image', 'int', 'int', 'int', 'int', 'Color' ] => 'void' ],
     ImageMipmaps         => [ ['Image']                     => 'void' ],
