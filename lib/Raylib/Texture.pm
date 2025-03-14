@@ -11,7 +11,7 @@ class Raylib::Image {
     field $y : param = 0;
 
     ADJUST {
-        unless ( $image isa Rayli::FFI::Image ) {
+        unless ( $image isa Raylib::FFI::Image ) {
             if ( ref $image eq 'SCALAR' ) {
                 $image = LoadImageFromMemory($image);
             }
