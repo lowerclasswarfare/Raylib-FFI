@@ -45,7 +45,7 @@ class Raylib::Texture {
 
     field $x : param    = 0;
     field $y : param    = 0;
-    field $tint : param = WHITE;
+    field $tint : param = Raylib::Color::WHITE;
 
     ADJUST {
         unless ( $texture isa Raylib::FFI::Texture ) {
