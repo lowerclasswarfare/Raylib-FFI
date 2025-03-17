@@ -741,7 +741,7 @@ my %functions = (
     LoadImageSvg  => [ ['string']                         => 'Image' ],
     LoadImageAnim => [ [ 'string', 'int' ]                => 'Image' ],
 
-    LoadImageFromMemory  => [ [ 'string', 'string' ] => 'Image' ],
+    LoadImageFromMemory  => [ [ 'string', 'string', 'int' ] => 'Image' ],
     LoadImageFromTexture => [ ['Texture2D']          => 'Image' ],
     LoadImageFromScreen  => [ []                     => 'Image' ],
     IsImageValid         => [ ['Image']              => 'bool' ],
