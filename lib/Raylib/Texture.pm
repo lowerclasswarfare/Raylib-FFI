@@ -83,7 +83,7 @@ class Raylib::Texture {
         $src,
         $dst,
         $origin =
-          Raylib::FFI::Vector2D->new( x => $dst->width, y => $dst->height ),
+          Raylib::FFI::Vector2D->new( x => 0, y => 0 ),
         $rot = 0,
         $tint = $tint
       )
