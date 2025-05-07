@@ -675,7 +675,7 @@ my %functions = (
     DrawEllipseLines      => [ [qw(int int float float)]           => 'void' ],
     DrawRing              => [ [qw(int int float float float)]     => 'void' ],
     DrawRingLines         => [ [qw(int int float float float)]     => 'void' ],
-    DrawRectangle         => [ [qw(int int int int)]               => 'void' ],
+    DrawRectangle         => [ [qw(int int int int Color)]         => 'void' ],
     DrawRectangleV        => [ [ 'Vector2D', 'Vector2D' ]          => 'void' ],
     DrawRectangleRec      => [ [ 'Rectangle', 'Color' ]            => 'void' ],
     DrawRectanglePro      =>
