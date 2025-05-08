@@ -1,10 +1,8 @@
-use 5.38.0;
-use experimental qw(class);
-use builtin 'export_lexically';
+use 5.36.3;
+use Feature::Compat::Class;
 
 class Raylib::Keyboard {
     use Raylib::FFI;
-    use builtin 'export_lexically';
     our %key_map;
 
     BEGIN {
@@ -121,24 +119,20 @@ class Raylib::Keyboard {
             KEY_VOLUME_UP     => 24,
             KEY_VOLUME_DOWN   => 25
         );
+
     }
     use constant \%key_map;
 
-    field $key_map : param = {};
-
-    sub import {
-        export_lexically(
-
-            # key functions
-            key_down     => \&Raylib::FFI::IsKeyDown,
-            key_up       => \&Raylib::FFI::IsKeyUp,
-            key_released => \&Raylib::FFI::IsKeyReleased,
-            key_pressed  => \&Raylib::FFI::GetKeyPressed,
-
-            # key constants
-            map { $_ => __PACKAGE__->can($_) } keys %key_map,
-        );
+    BEGIN {
+        *key_down     = &Raylib::FFI::IsKeyDown;
+        *key_up       = &Raylib::FFI::IsKeyUp;
+        *key_released = &Raylib::FFI::IsKeyReleased;
+        *key_pressed  = &Raylib::FFI::GetKeyPressed;
     }
+
+    our @EXPORT_OK( keys %key_map );
+
+    field $key_map :param = {};
 
     method handle_events() {
         while ( my $key = GetKeyPressed() ) {

@@ -1,11 +1,11 @@
-use 5.38.0;
-use experimental 'class';
+use 5.36.3;
+use Feature::Compat::Class;
 
 use Raylib::Text;
 use Raylib::Texture;
 
 class Raylib::App {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use Raylib::Color qw();
 
     field $title : param = $0;
@@ -100,6 +100,8 @@ class Raylib::App {
     method DESTROY { CloseWindow() }
 }
 
+1;
+
 __END__
 
 =pod
@@ -112,7 +114,6 @@ Raylib::App - Perlish wrapper for Raylib videogame library
 
 =head1 SYNOPSIS
 
-    use 5.38.2;
     use lib qw(lib);
     use Raylib::App;
 

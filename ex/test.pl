@@ -1,4 +1,4 @@
-use 5.38.2;
+use 5.36.3;
 use lib qw(lib);
 use Raylib::FFI;
 use constant Color => 'Raylib::FFI::Color';

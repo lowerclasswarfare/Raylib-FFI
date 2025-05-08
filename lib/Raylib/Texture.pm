@@ -1,8 +1,8 @@
-use 5.38.0;
-use experimental qw(class);
+use 5.36.3;
+use Feature::Compat::Class;
 
 class Raylib::Image {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use builtin qw(false);
 
     field $image : param;
@@ -11,7 +11,7 @@ class Raylib::Image {
     field $y : param = 0;
 
     ADJUST {
-        unless ( $image isa Rayli::FFI::Image ) {
+        unless ( $image isa Raylib::FFI::Image ) {
             if ( ref $image eq 'SCALAR' ) {
                 $image = LoadImageFromMemory($image);
             }
@@ -19,7 +19,7 @@ class Raylib::Image {
                 $image = LoadImage($image);
             }
         }
-        unless ( IsImageReady($image) ) {
+        unless ( IsImageValid($image) ) {
             die "Failed to load image";
         }
     }
@@ -38,20 +38,20 @@ class Raylib::Image {
 }
 
 class Raylib::Texture {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     use Raylib::Color;
 
     field $texture : param;
 
     field $x : param    = 0;
     field $y : param    = 0;
-    field $tint : param = WHITE;
+    field $tint : param = Raylib::Color::WHITE;
 
     ADJUST {
         unless ( $texture isa Raylib::FFI::Texture ) {
             $texture = LoadTexture($texture);
         }
-        unless ( IsTextureReady($texture) ) {
+        unless ( IsTextureValid($texture) ) {
             die "Failed to load texture";
         }
     }
@@ -83,7 +83,7 @@ class Raylib::Texture {
         $src,
         $dst,
         $origin =
-          Raylib::FFI::Vector2D->new( x => $dst->width, y => $dst->height ),
+          Raylib::FFI::Vector2D->new( x => 0, y => 0 ),
         $rot = 0,
         $tint = $tint
       )
@@ -97,3 +97,5 @@ class Raylib::Texture {
         }
     }
 }
+
+1;

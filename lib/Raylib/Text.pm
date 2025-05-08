@@ -1,5 +1,5 @@
-use 5.38.0;
-use experimental 'class';
+use 5.36.3;
+use Feature::Compat::Class;
 
 class Raylib::Text {
     use Raylib::FFI;
@@ -18,7 +18,7 @@ class Raylib::Text {
 }
 
 class Raylib::Text::FPS {
-    use Raylib::FFI;
+    use Raylib::FFI ':all';
     field $position : param = [ 0, 0 ];
 
     method draw() {
@@ -26,3 +26,4 @@ class Raylib::Text::FPS {
     }
 }
 
+1;

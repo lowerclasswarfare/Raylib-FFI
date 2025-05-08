@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
-use 5.40.0;
+use 5.36.3;
 use lib qw(lib);
-use experimental 'class';
+use Feature::Compat::Class;
 
 use Raylib::App;
 
