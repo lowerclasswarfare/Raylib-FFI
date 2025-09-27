@@ -3,7 +3,7 @@ use Feature::Compat::Class;
 
 class Raylib::Image {
     use Raylib::FFI ':all';
-    use builtin qw(false);
+    use builtin::compat qw(false);
 
     field $image : param;
 
